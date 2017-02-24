@@ -2,16 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content_login"
+    android:id="@+id/content_registration"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/colorAccent"
-    android:gravity="center"
     android:orientation="vertical"
-    android:padding="10dp"
+    android:gravity="center"
+    android:background="@color/colorAccent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="demo.example.com.ecommerce.Login"
-    tools:showIn="@layout/activity_login">
+    tools:context="demo.example.com.ecommerce.Registration"
+    tools:showIn="@layout/activity_registration">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -22,14 +21,26 @@
         android:paddingRight="20dp">
 
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/white"
-            android:hint="User Name"
+            android:hint="Name"
             android:padding="10dp"
             android:inputType="textPersonName" />
+
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:hint="Email"
+            android:padding="10dp"
+            android:inputType="textPersonName" />
+
 
         <EditText
             android:id="@+id/password"
@@ -42,21 +53,14 @@
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/register"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/password"
+            android:layout_alignEnd="@+id/register"
             android:layout_marginTop="20dip"
             android:background="@color/white"
-            android:text="Login" />
+            android:text="Register" />
 
-        <Button
-            android:id="@+id/newregister"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/newregister"
-            android:layout_marginTop="10dip"
-            android:background="@color/white"
-            android:text="New Register" />
     </LinearLayout>
+
 </LinearLayout>
