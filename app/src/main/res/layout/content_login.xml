@@ -5,7 +5,7 @@
     android:id="@+id/content_login"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/colorAccent"
+    android:background="@color/bg"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp"
@@ -28,6 +28,7 @@
             android:layout_marginBottom="10dp"
             android:background="@color/white"
             android:hint="User Name"
+            android:textColorHint="@color/bg"
             android:padding="10dp"
             android:inputType="textPersonName" />
 
@@ -39,6 +40,7 @@
             android:background="@color/white"
             android:padding="10dp"
             android:hint="password"
+            android:textColorHint="@color/bg"
             android:inputType="textPassword" />
 
         <Button
@@ -48,7 +50,8 @@
             android:layout_alignEnd="@+id/password"
             android:layout_marginTop="20dip"
             android:background="@color/white"
-            android:text="Login" />
+            android:text="Login"
+            android:textColor="@color/bg"/>
 
         <Button
             android:id="@+id/newregister"
@@ -57,6 +60,7 @@
             android:layout_alignEnd="@+id/newregister"
             android:layout_marginTop="10dip"
             android:background="@color/white"
-            android:text="New Register" />
+            android:text="New Register"
+            android:textColor="@color/bg"/>
     </LinearLayout>
 </LinearLayout>
