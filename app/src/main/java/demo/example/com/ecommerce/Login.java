@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,10 +15,10 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        */
-        login = (Button) findViewById(R.id.login);
+
+        login = (Button) findViewById(R.id.btnLogin);
         new_register = (Button) findViewById(R.id.newregister);
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -36,8 +37,6 @@ public class Login extends AppCompatActivity {
                 ft.replace(R.id.content_login,registration_frag);
                 ft.addToBackStack("A");
                 ft.commit();
-
-
             }
         });
 

@@ -29,7 +29,7 @@
             android:hint="Name"
             android:padding="10dp"
             android:inputType="textPersonName"
-            android:textColorHint="@color/bg"/>
+            />
 
 
         <EditText
@@ -41,7 +41,7 @@
             android:hint="Email"
             android:padding="10dp"
             android:inputType="textPersonName"
-            android:textColorHint="@color/bg"/>
+            />
 
 
         <EditText
@@ -53,7 +53,7 @@
             android:padding="10dp"
             android:hint="password"
             android:inputType="textPassword"
-            android:textColorHint="@color/bg"/>
+            />
 
         <Button
             android:id="@+id/register"
@@ -63,7 +63,7 @@
             android:layout_marginTop="20dip"
             android:background="@color/white"
             android:text="Register"
-            android:textColor="@color/bg"/>
+            />
 
     </LinearLayout>
 

@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_login"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/bg"
     android:gravity="center"
     android:orientation="vertical"
@@ -14,9 +14,10 @@
     tools:showIn="@layout/activity_login">
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:weightSum="4"
         android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
@@ -28,7 +29,6 @@
             android:layout_marginBottom="10dp"
             android:background="@color/white"
             android:hint="User Name"
-            android:textColorHint="@color/bg"
             android:padding="10dp"
             android:inputType="textPersonName" />
 
@@ -40,18 +40,16 @@
             android:background="@color/white"
             android:padding="10dp"
             android:hint="password"
-            android:textColorHint="@color/bg"
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/btnLogin"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/password"
             android:layout_marginTop="20dip"
             android:background="@color/white"
-            android:text="Login"
-            android:textColor="@color/bg"/>
+            android:text="Login" />
 
         <Button
             android:id="@+id/newregister"
@@ -60,7 +58,6 @@
             android:layout_alignEnd="@+id/newregister"
             android:layout_marginTop="10dip"
             android:background="@color/white"
-            android:text="New Register"
-            android:textColor="@color/bg"/>
+            android:text="New Register" />
     </LinearLayout>
 </FrameLayout>
