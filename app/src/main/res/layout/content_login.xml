@@ -58,6 +58,6 @@
             android:layout_alignEnd="@+id/newregister"
             android:layout_marginTop="10dip"
             android:background="@color/white"
-            android:text="New Register" />
+            android:text="New User" />
     </LinearLayout>
 </FrameLayout>
