@@ -43,5 +43,4 @@ public class Description extends android.app.Fragment {
 
         return view;
     }
-
 }
