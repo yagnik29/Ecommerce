@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="bg">#26ae90</color>
+    <color name="text_back">#23297a</color>
     <color name="toolbar">#008c6d</color>
     <color name="bg_register">#2e3237</color>
     <color name="bg_main">#428bca</color>

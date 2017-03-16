@@ -3,13 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/bg"
+    android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
     tools:context="demo.example.com.ecommerce.Register"
-    tools:showIn="@layout/fragment_register">
     >
 
     <LinearLayout
@@ -26,8 +25,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
             android:hint="Name"
+            android:background="@color/bg_register"
+            android:textColorHint="@color/white"
             android:inputType="textPersonName"
             android:padding="10dp" />
 
@@ -37,7 +37,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
+            android:background="@color/bg_register"
+            android:textColorHint="@color/white"
             android:hint="Email"
             android:inputType="textPersonName"
             android:padding="10dp" />
@@ -47,18 +48,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
+            android:background="@color/bg_register"
+            android:textColorHint="@color/white"
+            android:ems="10"
             android:hint="Phone"
             android:inputType="phone"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/bg_register"
+            android:textColorHint="@color/white"
             android:ems="10"
-            android:padding="10dp"/>
+            android:hint="Address"
+            android:inputType="textPostalAddress"
+            android:padding="10dp" />
 
         <EditText
             android:id="@+id/city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
+            android:background="@color/bg_register"
+            android:textColorHint="@color/white"
             android:hint="City"
             android:inputType="textPersonName"
             android:padding="10dp" />
@@ -68,7 +83,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
+            android:background="@color/bg_register"
+            android:textColorHint="@color/white"
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="10dp" />
@@ -80,7 +96,8 @@
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/register"
             android:layout_marginTop="20dip"
-            android:background="@color/white"
+            android:background="@color/bg_register"
+            android:textColor="@color/white"
             android:text="Register" />
 
     </LinearLayout>

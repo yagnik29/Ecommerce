@@ -5,10 +5,10 @@
     android:id="@+id/content_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp"
+    android:background="@color/white"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="demo.example.com.ecommerce.Login"
     tools:showIn="@layout/activity_login">
@@ -27,8 +27,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
             android:hint="User Name"
+            android:textColorHint="@color/white"
+            android:background="@color/bg_register"
             android:padding="10dp"
             android:inputType="textPersonName" />
 
@@ -37,9 +38,10 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
-            android:padding="10dp"
             android:hint="Password"
+            android:textColorHint="@color/white"
+            android:background="@color/bg_register"
+            android:padding="10dp"
             android:inputType="textPassword" />
 
 
@@ -49,8 +51,11 @@
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/password"
             android:layout_marginTop="20dip"
-            android:background="@color/white"
-            android:text="Login" />
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            android:background="@color/bg_register"
+            android:text="Login"
+            />
 
 
         <TextView
@@ -59,8 +64,15 @@
             android:layout_height="wrap_content"
             android:id="@+id/newregister"
             android:textSize="20sp"
-            android:textColor="@color/white"
-            android:background="@color/bg"
+            android:textColor="@color/bg_register"
+            android:background="@color/white"
             android:textAlignment="center" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/shopping_cart" />
 </FrameLayout>
