@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -14,7 +16,8 @@ import android.widget.TextView;
 public class HomeScreen extends AppCompatActivity {
 
     ImageView imageView;
-    TextView textUname, textPassw;
+    TabLayout tabLayout;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +27,9 @@ public class HomeScreen extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         imageView = (ImageView) findViewById(R.id.imageView);
-        textUname = (TextView) findViewById(R.id.textView2);
-        textPassw = (TextView) findViewById(R.id.textView3);
-        Intent intent1 = getIntent();
-        String uname = intent1.getStringExtra("uname");
-        String passw = intent1.getStringExtra("passw");
+        tabLayout = (TabLayout) findViewById(R.id.tablayout);
+        viewPager = (ViewPager) findViewById(R.id.pager);
 
-        textUname.setText(uname);
-        textPassw.setText(passw);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +42,15 @@ public class HomeScreen extends AppCompatActivity {
 
             }
         });
+
+        Tab_Adapter tab_adapter = new Tab_Adapter(getSupportFragmentManager());
+        tab_adapter.addFragment(new Electroincs(),"Electronic");
+        tab_adapter.addFragment(new Appliances(),"Appliances");
+        tab_adapter.addFragment(new Clothing(),"Cloths");
+        tab_adapter.addFragment(new Books(),"Books");
+
+        viewPager.setAdapter(tab_adapter);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
 }
