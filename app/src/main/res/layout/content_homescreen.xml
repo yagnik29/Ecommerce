@@ -14,28 +14,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="2"
-        >
+        android:weightSum="2">
 
-        <ImageView
+        <ViewFlipper
+            android:id="@+id/flipper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:id="@+id/imageView"
-            android:src="@drawable/book" />
+            android:layout_weight="1.5"></ViewFlipper>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_weight="0.06"
             android:background="#000000"
-            app:tabIndicatorColor="#ffffff"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
-            app:tabSelectedTextColor="@color/colorAccent"
-            app:tabTextColor="#ffffff"
             android:textAlignment="center"
-            android:layout_weight="0.06">
+            app:tabIndicatorColor="#ffffff"
+            app:tabSelectedTextColor="@color/colorAccent"
+            app:tabTextColor="#ffffff">
 
         </android.support.design.widget.TabLayout>
 
@@ -43,7 +41,7 @@
             android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="221dp"
-            android:layout_weight="2">
+            android:layout_weight="0.5">
         </android.support.v4.view.ViewPager>
 
 
