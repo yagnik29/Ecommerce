@@ -2,5 +2,4 @@
 E-System Application
 
 Screen Shot
-
-![device-2017-03-18-121127](device-2017-03-18-121127.png)
+![Login](https://cloud.githubusercontent.com/assets/12974874/24069770/18bc6280-0bd6-11e7-8790-d163f937dbbe.png)
