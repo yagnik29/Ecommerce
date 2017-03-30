@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    sleep(2000);
+                    sleep(3000);
                     Intent intent = new Intent(MainActivity.this,Login.class);
                     startActivity(intent);
                     finish();

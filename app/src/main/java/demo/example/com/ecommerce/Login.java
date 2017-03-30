@@ -30,7 +30,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent homescreen = new Intent(Login.this,HomeScreen.class);
+                Intent homescreen = new Intent(Login.this,Navigational.class);
                 String uname = username.getText().toString();
                 String passw = password.getText().toString();
                 homescreen.putExtra("uname",uname);
