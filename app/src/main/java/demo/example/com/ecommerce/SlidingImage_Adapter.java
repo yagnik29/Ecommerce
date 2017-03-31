@@ -1,7 +1,10 @@
 package demo.example.com.ecommerce;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,16 +39,21 @@ public class SlidingImage_Adapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup view, int position) {
+    public Object instantiateItem(ViewGroup view, final int position) {
 
         View imageLayout = inflater.inflate(R.layout.sliding_image, view, false);
         assert imageLayout != null;
         final ImageView imageView = (ImageView) imageLayout.findViewById(R.id.slide_image);
 
         imageView.setImageResource(images.get(position));
-
         view.addView(imageLayout, 0);
-
+        imageLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //this will log the page number that was click
+                Log.i("TAG", "This page was clicked: " + position);
+            }
+        });
         return imageLayout;
 
     }

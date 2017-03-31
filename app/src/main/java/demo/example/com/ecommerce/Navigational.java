@@ -1,5 +1,6 @@
 package demo.example.com.ecommerce;
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -47,7 +48,7 @@ public class Navigational extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        imageView = (ImageView) findViewById(R.id.imageView);
+        imageView = (ImageView) findViewById(R.id.slide_image);
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
         viewPager_tab= (ViewPager) findViewById(R.id.pager_tab);
         viewPager_image = (ViewPager) findViewById(R.id.pager_image);
@@ -68,19 +69,6 @@ public class Navigational extends AppCompatActivity
         viewFlipper.setFlipInterval(3000);
         viewFlipper.setAutoStart(true);
 */
-        //Image Onclick
-/*
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Description description_frag = new Description();
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.content_homescreen, description_frag);
-                ft.addToBackStack("B");
-                ft.commit();
-
-            }
-        });*/
 
         for(int i = 0; i < images.length; i++)
             imageArray.add(images[i]);
@@ -132,6 +120,29 @@ public class Navigational extends AppCompatActivity
 
             }
         });
+
+        indicator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Description description_frag = new Description();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.content_navigational, description_frag);
+                ft.addToBackStack("B");
+                ft.commit();
+            }
+        });
+/*
+        //Image Onclick
+        viewPager_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Description description_frag = new Description();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.content_navigational, description_frag);
+                ft.addToBackStack("B");
+                ft.commit();
+            }
+        });*/
 
         Tab_Adapter tab_adapter = new Tab_Adapter(getSupportFragmentManager());
         tab_adapter.addFragment(new Electroincs(), "Electronic");
