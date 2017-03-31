@@ -5,10 +5,16 @@
     tools:context="demo.example.com.ecommerce.Electroincs">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <GridView
+        android:id="@+id/grid"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is Electronics"
-        android:background="@color/colorAccent"/>
+        android:layout_height="wrap_content"
+        android:verticalSpacing="0dp"
+        android:horizontalSpacing="0dp"
+        android:stretchMode="columnWidth"
+        android:numColumns="2">
+
+    </GridView>
 
 </FrameLayout>
