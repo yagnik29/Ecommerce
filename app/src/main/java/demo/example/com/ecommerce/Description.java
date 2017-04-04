@@ -7,7 +7,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -16,6 +18,7 @@ import android.widget.TextView;
 public class Description extends android.app.Fragment {
 
     TextView textDescription;
+    Button addtocart, buynow;
 
     public Description() {
         // Required empty public constructor
@@ -29,6 +32,9 @@ public class Description extends android.app.Fragment {
 
         View view = inflater.inflate(R.layout.fragment_description, container, false);
         textDescription = (TextView) view.findViewById(R.id.text_description);
+        addtocart = (Button) view.findViewById(R.id.addtocart);
+        buynow = (Button) view.findViewById(R.id.buynow);
+
 
         textDescription.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +47,19 @@ public class Description extends android.app.Fragment {
             }
         });
 
+        addtocart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Added in cart", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        buynow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Please conform the order", Toast.LENGTH_SHORT).show();
+            }
+        });
         return view;
     }
 }
