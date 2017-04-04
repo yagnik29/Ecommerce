@@ -1,6 +1,7 @@
 package demo.example.com.ecommerce;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ public class GridAdapter extends BaseAdapter {
 
     String [] itemNameList;
     Context context;
+    private Navigational navigational;
     int [] itemImage;
     private static LayoutInflater inflater=null;
 
@@ -25,6 +27,8 @@ public class GridAdapter extends BaseAdapter {
         this.itemNameList = itemNameList;
         this.itemImage = itemImage;
         this.context = context;
+        navigational = (Navigational) context;
+
         inflater = (LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -65,6 +69,11 @@ public class GridAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "This is what you clicked", Toast.LENGTH_SHORT).show();
+                Description description_frag = new Description();
+                FragmentTransaction ft = navigational.getFragmentManager().beginTransaction();
+                ft.replace(R.id.content_navigational, description_frag);
+                ft.addToBackStack("B");
+                ft.commit();
             }
         });
         return rawView;

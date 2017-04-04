@@ -21,11 +21,13 @@ public class SlidingImage_Adapter extends PagerAdapter {
     private ArrayList<Integer> images;
     private Context context;
     private LayoutInflater inflater;
+    private Navigational navigational;
 
     public SlidingImage_Adapter(Context context, ArrayList<Integer> images) {
         this.context = context;
         this.images = images;
         inflater = LayoutInflater.from(context);
+        navigational = (Navigational) context;
     }
 
     @Override
@@ -52,6 +54,11 @@ public class SlidingImage_Adapter extends PagerAdapter {
             public void onClick(View view) {
                 //this will log the page number that was click
                 Log.i("TAG", "This page was clicked: " + position);
+                Description description_frag = new Description();
+                FragmentTransaction ft = navigational.getFragmentManager().beginTransaction();
+                ft.replace(R.id.content_navigational, description_frag);
+                ft.addToBackStack("B");
+                ft.commit();
             }
         });
         return imageLayout;

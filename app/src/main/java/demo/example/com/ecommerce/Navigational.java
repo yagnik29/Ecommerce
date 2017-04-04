@@ -120,7 +120,7 @@ public class Navigational extends AppCompatActivity
 
             }
         });
-
+/*
         indicator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,7 +130,7 @@ public class Navigational extends AppCompatActivity
                 ft.addToBackStack("B");
                 ft.commit();
             }
-        });
+        });*/
 /*
         //Image Onclick
         viewPager_image.setOnClickListener(new View.OnClickListener() {
