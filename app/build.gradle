@@ -30,4 +30,5 @@ dependencies {
     //added the dependency for circular Pager Indicator
     compile 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
     testCompile 'junit:junit:4.12'
+    compile 'com.squareup.okhttp:okhttp:2.0.0'
 }
