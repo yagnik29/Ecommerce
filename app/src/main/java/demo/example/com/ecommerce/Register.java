@@ -36,8 +36,7 @@ public class Register extends android.app.Fragment {
     public Register() {
         // Required empty public constructor
     }
-    private static String TAG = "PermissionDemo";
-    private static final int RECORD_REQUEST_CODE = 101;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -72,9 +71,6 @@ public class Register extends android.app.Fragment {
                 String sPassword = password.getText().toString();
 
                 try {
-                    /*String url = "https://aqua-cough.000webhostapp.com/registration.php?uname=" + sName +
-                            "&email_id=" + sEmail + "&phone=" + sPhone + "&address1=" + sAddress + "&city=" + sCity + "&password=" + sPassword;*/
-
                     String url = "http://yagnik.890m.com/webservices/registration.php?uname=" + sName +
                             "&email_id=" + sEmail + "&phone=" + sPhone + "&address1=" + sAddress + "&city=" + sCity + "&password=" + sPassword;
 
