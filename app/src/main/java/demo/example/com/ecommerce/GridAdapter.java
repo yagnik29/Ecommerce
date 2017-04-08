@@ -1,8 +1,8 @@
 package demo.example.com.ecommerce;
 
-import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,30 +11,33 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Created by Yash on 3/31/2017.
  */
 
 public class GridAdapter extends BaseAdapter {
 
-    String [] itemNameList;
+
     Context context;
     private Navigational navigational;
-    int [] itemImage;
-    private static LayoutInflater inflater=null;
+    ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
+    LayoutInflater inflater;
 
-    public GridAdapter (Context context, String [] itemNameList, int[] itemImage){
-        this.itemNameList = itemNameList;
-        this.itemImage = itemImage;
+    public GridAdapter(Context context, ArrayList<HashMap<String, String>> arrayList) {
+        this.arrayList = arrayList;
         this.context = context;
         navigational = (Navigational) context;
-
-        inflater = (LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater = LayoutInflater.from(this.context);
     }
 
     @Override
     public int getCount() {
-        return itemNameList.length;
+        return arrayList.size();
     }
 
     @Override
@@ -47,25 +50,30 @@ public class GridAdapter extends BaseAdapter {
         return i;
     }
 
-    public  class Holder{
+    public class Holder {
         TextView gridtextView;
-        ImageView  gridimageView;
+        ImageView gridimageView;
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(int i, View v, ViewGroup viewGroup) {
 
+        HashMap<String, String> hm = arrayList.get(i);
         Holder holder = new Holder();
+        View view = inflater.inflate(R.layout.customgrid_layout,null);
 
-        View rawView;
-        rawView = inflater.inflate(R.layout.customgrid_layout,null);
-        holder.gridtextView= (TextView) rawView.findViewById(R.id.gridText);
-        holder.gridimageView = (ImageView) rawView.findViewById(R.id.gridImage);
+        holder.gridtextView = (TextView) view.findViewById(R.id.gridText);
+        holder.gridimageView = (ImageView) view.findViewById(R.id.gridImage);
+        Log.e("in adapter==", "" + arrayList.get(i).get("Image"));
 
-        holder.gridtextView.setText(itemNameList[i]);
-        holder.gridimageView.setImageResource(itemImage[i]);
+        holder.gridtextView.setText(hm.get("name"));
+        Picasso.with(context).load(hm.get("Image")).into(holder.gridimageView);
 
-        rawView.setOnClickListener(new View.OnClickListener() {
+//        holder.gridtextView.setText(arrayList.get(i).get("Desc"));
+//        holder.gridtextView.setText(arrayList.get(i).get("Price"));
+
+
+        view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "This is what you clicked", Toast.LENGTH_SHORT).show();
@@ -76,6 +84,6 @@ public class GridAdapter extends BaseAdapter {
                 ft.commit();
             }
         });
-        return rawView;
+        return view;
     }
 }

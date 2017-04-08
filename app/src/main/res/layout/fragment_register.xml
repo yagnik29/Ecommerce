@@ -84,6 +84,19 @@
             android:padding="10dp" />
 
         <EditText
+            android:id="@+id/pincode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/bg_register"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:hint="PIN Code"
+            android:inputType="phone"
+            android:padding="10dp" />
+
+        <EditText
             android:id="@+id/password"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
