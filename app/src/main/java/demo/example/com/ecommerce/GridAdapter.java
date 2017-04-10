@@ -62,12 +62,24 @@ public class GridAdapter extends BaseAdapter {
         Holder holder = new Holder();
         View view = inflater.inflate(R.layout.customgrid_layout,null);
 
+
         holder.gridtextView = (TextView) view.findViewById(R.id.gridText);
         holder.gridimageView = (ImageView) view.findViewById(R.id.gridImage);
         Log.e("in adapter==", "" + arrayList.get(i).get("Image"));
 
         holder.gridtextView.setText(hm.get("name"));
-        Picasso.with(context).load(hm.get("Image")).into(holder.gridimageView);
+
+        try {
+            Picasso.with(context).load(hm.get("Image")).into(holder.gridimageView);
+        }catch (IllegalArgumentException s){
+            Log.e("Not image" , String.valueOf(s));
+        }
+        /*if(hm.get("Image") != null){
+            Picasso.with(context).load(hm.get("Image")).into(holder.gridimageView);
+        }else {
+            Picasso.with(context).load(R.drawable.apple).into(holder.gridimageView);
+        }
+*/
 
 //        holder.gridtextView.setText(arrayList.get(i).get("Desc"));
 //        holder.gridtextView.setText(arrayList.get(i).get("Price"));
