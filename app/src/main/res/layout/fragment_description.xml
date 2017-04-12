@@ -1,8 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/description"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/description"
     android:background="@color/bg_register"
     tools:context="demo.example.com.ecommerce.Description">
 
@@ -13,50 +13,76 @@
         android:weightSum="1">
 
         <!-- TODO: Update blank fragment layout -->
+
+        <ImageView
+            android:id="@+id/descImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="fitXY" />
+
         <TextView
+            android:id="@+id/desctext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/descprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/text_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/text_description"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@color/white"
             android:gravity="center"
             android:text="@string/description"
-            android:textSize="30sp"/>
+            android:textColor="#000000"
+            android:textSize="15sp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
 
             <Button
+                android:id="@+id/addtocart"
                 android:layout_width="171dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dip"
+                android:background="@color/white"
                 android:text="Add to cart"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                android:layout_marginTop="20dip"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
                 android:textAlignment="center"
-                android:layout_gravity="center"
-                android:layout_height="50dp"
-                android:layout_marginRight="10dp"
-                android:id="@+id/addtocart" />
+                android:textColor="#000000"
+                android:textSize="20dp" />
 
             <Button
+                android:id="@+id/buynow"
                 android:layout_width="171dp"
-                android:text="Buy Now"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                android:layout_marginTop="20dip"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="20dip"
                 android:background="@color/white"
+                android:text="Buy Now"
                 android:textAlignment="center"
-                android:layout_gravity="center"
-                android:layout_height="50dp"
-                android:id="@+id/buynow" />
+                android:textColor="#000000"
+                android:textSize="20dp" />
 
 
         </LinearLayout>

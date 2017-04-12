@@ -96,7 +96,7 @@ public class Login extends AppCompatActivity {
 
             HttpServiceHandler servicedata = new HttpServiceHandler();
             String result = servicedata.getHttpdata(url);
-            Log.e("Result" , result);
+//            Log.e("Result" , result);
 
             try {
                 JSONArray jsonArray = new JSONArray(result);

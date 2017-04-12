@@ -2,6 +2,7 @@ package demo.example.com.ecommerce;
 
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,34 +53,25 @@ public class GridAdapter extends BaseAdapter {
 
     public class Holder {
         TextView gridtextView;
+        TextView gridPrice;
         ImageView gridimageView;
     }
 
     @Override
-    public View getView(int i, View v, ViewGroup viewGroup) {
+    public View getView(final int i, View v, ViewGroup viewGroup) {
 
-        HashMap<String, String> hm = arrayList.get(i);
+        final HashMap<String, String> hm = arrayList.get(i);
         Holder holder = new Holder();
         View view = inflater.inflate(R.layout.customgrid_layout,null);
 
-
         holder.gridtextView = (TextView) view.findViewById(R.id.gridText);
         holder.gridimageView = (ImageView) view.findViewById(R.id.gridImage);
+        holder.gridPrice = (TextView) view.findViewById(R.id.gridPrice);
         Log.e("in adapter==", "" + arrayList.get(i).get("Image"));
 
         holder.gridtextView.setText(hm.get("name"));
-
-        try {
-            Picasso.with(context).load(hm.get("Image")).into(holder.gridimageView);
-        }catch (IllegalArgumentException s){
-            Log.e("Not image" , String.valueOf(s));
-        }
-        /*if(hm.get("Image") != null){
-            Picasso.with(context).load(hm.get("Image")).into(holder.gridimageView);
-        }else {
-            Picasso.with(context).load(R.drawable.apple).into(holder.gridimageView);
-        }
-*/
+        holder.gridPrice.setText(hm.get("Price"));
+        Picasso.with(context).load(hm.get("Image")).into(holder.gridimageView);
 
 //        holder.gridtextView.setText(arrayList.get(i).get("Desc"));
 //        holder.gridtextView.setText(arrayList.get(i).get("Price"));
@@ -90,6 +82,12 @@ public class GridAdapter extends BaseAdapter {
             public void onClick(View view) {
                 Toast.makeText(context, "This is what you clicked", Toast.LENGTH_SHORT).show();
                 Description description_frag = new Description();
+                Bundle  bundle = new Bundle();
+                bundle.putString("name",arrayList.get(i).get("name"));
+                bundle.putString("Desc",arrayList.get(i).get("Desc"));
+                bundle.putString("Price",arrayList.get(i).get("Price"));
+                bundle.putString("Image",arrayList.get(i).get("Image"));
+                description_frag.setArguments(bundle);
                 FragmentTransaction ft = navigational.getFragmentManager().beginTransaction();
                 ft.replace(R.id.content_navigational, description_frag);
                 ft.addToBackStack("B");

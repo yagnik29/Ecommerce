@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,8 +18,10 @@ import android.widget.Toast;
  */
 public class Description extends android.app.Fragment {
 
-    TextView textDescription;
+    TextView textDescription, descText, descPrice;
+    ImageView descImage;
     Button addtocart, buynow;
+    String name, desc , price, image;
 
     public Description() {
         // Required empty public constructor
@@ -32,8 +35,24 @@ public class Description extends android.app.Fragment {
 
         View view = inflater.inflate(R.layout.fragment_description, container, false);
         textDescription = (TextView) view.findViewById(R.id.text_description);
+        descText = (TextView) view.findViewById(R.id.desctext);
+        descImage = (ImageView) view.findViewById(R.id.descImage);
+        descPrice = (TextView) view.findViewById(R.id.descprice);
         addtocart = (Button) view.findViewById(R.id.addtocart);
         buynow = (Button) view.findViewById(R.id.buynow);
+
+        Bundle bundle = this.getArguments();
+        if(bundle != null){
+            name = bundle.getString("name");
+            desc = bundle.getString("Desc");
+            price= bundle.getString("Price");
+            image = bundle.getString("Image");
+        }
+
+        /*descImage.setImageResource(Integer.parseInt(image));*/
+        descText.setText(name);
+        textDescription.setText(desc);
+        descPrice.setText(price);
 
 
         textDescription.setOnClickListener(new View.OnClickListener() {

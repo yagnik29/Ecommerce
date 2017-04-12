@@ -29,15 +29,15 @@ public class Electroincs extends Fragment {
     GridView gridElectronics;
     Context context;
     ArrayList itemName;
-    String URL, NAME,DESCRIPTION,PRICE,IMAGE;
+    String URL, NAME, DESCRIPTION, PRICE, IMAGE;
     ProgressDialog progressDialog;
     String name = "Name";
     String description = "Description";
     String price = "price";
     String image = "image";
-    String url="http://yagnik.890m.com/webservices/fetchimage.php";
+    String url = "http://yagnik.890m.com/webservices/fetchimage.php";
 
-    ArrayList<HashMap<String,String>> arrayList = new ArrayList<>();
+    ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
 
 /*
     public static String[] itemNameList={"TV", "AC","Laptop"};
@@ -66,12 +66,11 @@ public class Electroincs extends Fragment {
         new GetElectronicsdata().execute();
 
 
-
         return view;
 
     }
 
-    public class GetElectronicsdata extends AsyncTask<Void,Void,Void>{
+    public class GetElectronicsdata extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
@@ -85,22 +84,25 @@ public class Electroincs extends Fragment {
         protected Void doInBackground(Void... voids) {
             HttpServiceHandler servicedata = new HttpServiceHandler();
             String result = servicedata.getHttpdata(url);
-            Log.e("Result" , result);
+            /*Log.e("Result", result);*/
 
             try {
+                if (arrayList != null) {
+                    arrayList.clear();
+                }
                 JSONArray jsonArray = new JSONArray(result);
-                for (int i = 0; i < jsonArray.length();i++){
+                for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     NAME = jsonObject.getString(name);
-                    DESCRIPTION= jsonObject.getString(description);
+                    DESCRIPTION = jsonObject.getString(description);
                     PRICE = jsonObject.getString(price);
-                    IMAGE= jsonObject.getString(image);
+                    IMAGE = jsonObject.getString(image);
 
-                    HashMap<String,String> hm = new HashMap<>();
-                    hm.put("name",NAME);
-                    hm.put("Desc",DESCRIPTION);
-                    hm.put("Price",PRICE);
-                    hm.put("Image",IMAGE);
+                    HashMap<String, String> hm = new HashMap<>();
+                    hm.put("name", NAME);
+                    hm.put("Desc", DESCRIPTION);
+                    hm.put("Price", PRICE);
+                    hm.put("Image", IMAGE);
                     arrayList.add(hm);
 
                 }
@@ -115,9 +117,9 @@ public class Electroincs extends Fragment {
             super.onPostExecute(aVoid);
             progressDialog.dismiss();
 
-            GridAdapter adapter=new GridAdapter(getActivity(),arrayList);
+            GridAdapter adapter = new GridAdapter(getActivity(), arrayList);
             gridElectronics.setAdapter(adapter);
 
         }
     }
-    }
+}
