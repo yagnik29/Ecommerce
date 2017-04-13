@@ -21,13 +21,14 @@ public class SlidingImage_Adapter extends PagerAdapter {
     private ArrayList<Integer> images;
     private Context context;
     private LayoutInflater inflater;
-    private Navigational navigational;
+    private HomeFragment homeFragment;
 
     public SlidingImage_Adapter(Context context, ArrayList<Integer> images) {
-        this.context = context;
-        this.images = images;
-        inflater = LayoutInflater.from(context);
-        navigational = (Navigational) context;
+
+        this.context=context;
+        this.images=images;
+        inflater=LayoutInflater.from(this.context);
+
     }
 
     @Override
@@ -55,7 +56,7 @@ public class SlidingImage_Adapter extends PagerAdapter {
                 //this will log the page number that was click
                 Log.i("TAG", "This page was clicked: " + position);
                 Description description_frag = new Description();
-                FragmentTransaction ft = navigational.getFragmentManager().beginTransaction();
+                android.support.v4.app.FragmentTransaction ft = homeFragment.getFragmentManager().beginTransaction();
                 ft.replace(R.id.content_navigational, description_frag);
                 ft.addToBackStack("B");
                 ft.commit();

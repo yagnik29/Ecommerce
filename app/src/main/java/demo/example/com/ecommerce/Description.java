@@ -12,11 +12,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Description extends android.app.Fragment {
+public class Description extends Fragment{
 
     TextView textDescription, descText, descPrice;
     ImageView descImage;
@@ -49,7 +51,7 @@ public class Description extends android.app.Fragment {
             image = bundle.getString("Image");
         }
 
-        /*descImage.setImageResource(Integer.parseInt(image));*/
+        Picasso.with(getActivity()).load(image).into(descImage);
         descText.setText(name);
         textDescription.setText(desc);
         descPrice.setText(price);
@@ -59,8 +61,8 @@ public class Description extends android.app.Fragment {
             @Override
             public void onClick(View view) {
                 Checkout checkout = new Checkout();
-                android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.description,checkout);
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.content_navigational,checkout);
                 ft.addToBackStack("C");
                 ft.commit();
             }

@@ -1,21 +1,15 @@
 package demo.example.com.ecommerce;
 
-import android.app.FragmentTransaction;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.ViewFlipper;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -23,7 +17,11 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class HomeScreen extends AppCompatActivity {
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class HomeFragment extends Fragment {
 
     ImageView imageView;
     TabLayout tabLayout;
@@ -31,58 +29,30 @@ public class HomeScreen extends AppCompatActivity {
     private static int currentPage;
     private static int NUM_Pages;
 
-    //ViewFlipper viewFlipper;
-
     private static final Integer[] images = {R.drawable.litchi, R.drawable.mango, R.drawable.pineapple};
     private ArrayList<Integer> imageArray = new ArrayList<Integer>();
 
+
+    public HomeFragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_homescreen);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        imageView = (ImageView) view.findViewById(R.id.slide_image);
+        tabLayout = (TabLayout) view.findViewById(R.id.tablayout);
+        viewPager_tab = (ViewPager) view.findViewById(R.id.pager_tab);
+        viewPager_image = (ViewPager) view.findViewById(R.id.pager_image);
 
-        imageView = (ImageView) findViewById(R.id.imageView);
-        tabLayout = (TabLayout) findViewById(R.id.tablayout);
-        viewPager_tab= (ViewPager) findViewById(R.id.pager_tab);
-        viewPager_image = (ViewPager) findViewById(R.id.pager_image);
-        //viewFlipper = (ViewFlipper) findViewById(R.id.flipper);
-
-
-        /*for (int i = 0; i < images.length; i++) {
-            imageView = new ImageView(this);
-            imageView.setImageResource(images[i]);
-            viewFlipper.addView(imageView);
-        }
-
-        Animation in = AnimationUtils.loadAnimation(this, android.R.anim.slide_in_left);
-        Animation out = AnimationUtils.loadAnimation(this, android.R.anim.slide_out_right);
-
-        viewFlipper.setInAnimation(in);
-        viewFlipper.setOutAnimation(out);
-        viewFlipper.setFlipInterval(3000);
-        viewFlipper.setAutoStart(true);
-*/
-        //Image Onclick
-/*
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Description description_frag = new Description();
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.content_homescreen, description_frag);
-                ft.addToBackStack("B");
-                ft.commit();
-
-            }
-        });*/
-
-        for(int i = 0; i < images.length; i++)
+        for (int i = 0; i < images.length; i++)
             imageArray.add(images[i]);
 
-        viewPager_image.setAdapter(new SlidingImage_Adapter(HomeScreen.this, imageArray));
-        CirclePageIndicator indicator = (CirclePageIndicator) findViewById(R.id.indicator);
+        viewPager_image.setAdapter(new SlidingImage_Adapter(getActivity(), imageArray));
+        CirclePageIndicator indicator = (CirclePageIndicator) view.findViewById(R.id.indicator);
         indicator.setViewPager(viewPager_image);
 
         final float density = getResources().getDisplayMetrics().density;
@@ -128,8 +98,7 @@ public class HomeScreen extends AppCompatActivity {
 
             }
         });
-
-        Tab_Adapter tab_adapter = new Tab_Adapter(getSupportFragmentManager());
+        Tab_Adapter tab_adapter = new Tab_Adapter(getFragmentManager());
         tab_adapter.addFragment(new Electroincs(), "Electronic");
         tab_adapter.addFragment(new Appliances(), "Appliances");
         tab_adapter.addFragment(new Clothing(), "Fashion");
@@ -137,6 +106,8 @@ public class HomeScreen extends AppCompatActivity {
 
         viewPager_tab.setAdapter(tab_adapter);
         tabLayout.setupWithViewPager(viewPager_tab);
+
+        return view;
     }
 
 }

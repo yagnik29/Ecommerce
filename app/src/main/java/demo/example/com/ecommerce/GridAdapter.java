@@ -23,7 +23,6 @@ import java.util.HashMap;
 
 public class GridAdapter extends BaseAdapter {
 
-
     Context context;
     private Navigational navigational;
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
@@ -88,8 +87,9 @@ public class GridAdapter extends BaseAdapter {
                 bundle.putString("Price",arrayList.get(i).get("Price"));
                 bundle.putString("Image",arrayList.get(i).get("Image"));
                 description_frag.setArguments(bundle);
-                FragmentTransaction ft = navigational.getFragmentManager().beginTransaction();
-                ft.replace(R.id.content_navigational, description_frag);
+
+                android.support.v4.app.FragmentTransaction ft=navigational.getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.content_navigational,description_frag);
                 ft.addToBackStack("B");
                 ft.commit();
             }

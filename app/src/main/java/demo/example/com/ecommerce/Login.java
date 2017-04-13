@@ -93,7 +93,6 @@ public class Login extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-
             HttpServiceHandler servicedata = new HttpServiceHandler();
             String result = servicedata.getHttpdata(url);
 //            Log.e("Result" , result);

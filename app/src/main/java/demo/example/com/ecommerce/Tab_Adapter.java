@@ -15,9 +15,10 @@ public class Tab_Adapter extends FragmentPagerAdapter {
     ArrayList<Fragment> fragments = new ArrayList<>();
     ArrayList<String> fragmentTitle = new ArrayList<>();
 
-    public Tab_Adapter(FragmentManager fm) {
-        super(fm);
+    public Tab_Adapter(FragmentManager fragmentManager) {
+        super(fragmentManager);
     }
+
 
     @Override
     public Fragment getItem(int position) {

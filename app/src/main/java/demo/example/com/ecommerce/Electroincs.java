@@ -100,6 +100,7 @@ public class Electroincs extends Fragment {
 
                     HashMap<String, String> hm = new HashMap<>();
                     hm.put("name", NAME);
+
                     hm.put("Desc", DESCRIPTION);
                     hm.put("Price", PRICE);
                     hm.put("Image", IMAGE);
