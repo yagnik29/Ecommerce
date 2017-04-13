@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
         for (int i = 0; i < images.length; i++)
             imageArray.add(images[i]);
 
-        viewPager_image.setAdapter(new SlidingImage_Adapter(getActivity(), imageArray));
+        viewPager_image.setAdapter(new SlidingImage_Adapter(getContext(), imageArray));
         CirclePageIndicator indicator = (CirclePageIndicator) view.findViewById(R.id.indicator);
         indicator.setViewPager(viewPager_image);
 
@@ -101,7 +101,7 @@ public class HomeFragment extends Fragment {
         Tab_Adapter tab_adapter = new Tab_Adapter(getFragmentManager());
         tab_adapter.addFragment(new Electroincs(), "Electronic");
         tab_adapter.addFragment(new Appliances(), "Appliances");
-        tab_adapter.addFragment(new Clothing(), "Fashion");
+        //tab_adapter.addFragment(new Clothing(), "Fashion");
         tab_adapter.addFragment(new Books(), "Books");
 
         viewPager_tab.setAdapter(tab_adapter);

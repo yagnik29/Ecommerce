@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Description extends Fragment{
+public class Description extends android.app.Fragment{
 
     TextView textDescription, descText, descPrice;
     ImageView descImage;
@@ -61,7 +61,7 @@ public class Description extends Fragment{
             @Override
             public void onClick(View view) {
                 Checkout checkout = new Checkout();
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.content_navigational,checkout);
                 ft.addToBackStack("C");
                 ft.commit();
@@ -71,14 +71,14 @@ public class Description extends Fragment{
         addtocart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Added in cart", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Added in cart", Toast.LENGTH_SHORT).show();
             }
         });
 
         buynow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Please conform the order", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Please conform the order", Toast.LENGTH_SHORT).show();
             }
         });
         return view;

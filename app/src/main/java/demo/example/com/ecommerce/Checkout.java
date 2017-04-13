@@ -16,7 +16,7 @@ import android.widget.TextView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Checkout extends Fragment {
+public class Checkout extends android.app.Fragment {
 
     TextView textCheckout;
 
@@ -36,7 +36,7 @@ public class Checkout extends Fragment {
             @Override
             public void onClick(View view) {
                 Payment payment = new Payment();
-                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.checkout,payment);
                 ft.addToBackStack("D");
                 ft.commit();

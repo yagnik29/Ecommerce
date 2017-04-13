@@ -12,6 +12,8 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import static demo.example.com.ecommerce.R.menu.navigational;
+
 /**
  * Created by Yash on 3/28/2017.
  */
@@ -21,12 +23,13 @@ public class SlidingImage_Adapter extends PagerAdapter {
     private ArrayList<Integer> images;
     private Context context;
     private LayoutInflater inflater;
-    private HomeFragment homeFragment;
+    private Navigational navigational;
 
     public SlidingImage_Adapter(Context context, ArrayList<Integer> images) {
 
         this.context=context;
         this.images=images;
+        navigational = (Navigational) context;
         inflater=LayoutInflater.from(this.context);
 
     }
@@ -49,19 +52,19 @@ public class SlidingImage_Adapter extends PagerAdapter {
         final ImageView imageView = (ImageView) imageLayout.findViewById(R.id.slide_image);
 
         imageView.setImageResource(images.get(position));
-        view.addView(imageLayout, 0);
-        imageLayout.setOnClickListener(new View.OnClickListener() {
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //this will log the page number that was click
-                Log.i("TAG", "This page was clicked: " + position);
+                Log.i("TAG", "This page was clicked: " + (position+1));
                 Description description_frag = new Description();
-                android.support.v4.app.FragmentTransaction ft = homeFragment.getFragmentManager().beginTransaction();
+                FragmentTransaction ft = navigational.getFragmentManager().beginTransaction();
                 ft.replace(R.id.content_navigational, description_frag);
-                ft.addToBackStack("B");
+                ft.addToBackStack("C");
                 ft.commit();
             }
         });
+        view.addView(imageLayout);
         return imageLayout;
 
     }

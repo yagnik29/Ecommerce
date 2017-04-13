@@ -88,7 +88,7 @@ public class GridAdapter extends BaseAdapter {
                 bundle.putString("Image",arrayList.get(i).get("Image"));
                 description_frag.setArguments(bundle);
 
-                android.support.v4.app.FragmentTransaction ft=navigational.getSupportFragmentManager().beginTransaction();
+                FragmentTransaction ft=navigational.getFragmentManager().beginTransaction();
                 ft.replace(R.id.content_navigational,description_frag);
                 ft.addToBackStack("B");
                 ft.commit();
