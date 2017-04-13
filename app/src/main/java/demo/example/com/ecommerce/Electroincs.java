@@ -35,7 +35,7 @@ public class Electroincs extends Fragment {
     String description = "Description";
     String price = "price";
     String image = "image";
-    String url = "http://yagnik.890m.com/webservices/fetchimage.php";
+    String url = "http://yagnik.890m.com/webservices/fetchimageEle.php";
 
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
 
@@ -61,8 +61,6 @@ public class Electroincs extends Fragment {
                     new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
-
-        URL = "http://yagnik.890m.com/webservices/fetchimage.php";
         new GetElectronicsdata().execute();
 
 
@@ -84,7 +82,7 @@ public class Electroincs extends Fragment {
         protected Void doInBackground(Void... voids) {
             HttpServiceHandler servicedata = new HttpServiceHandler();
             String result = servicedata.getHttpdata(url);
-            /*Log.e("Result", result);*/
+            Log.e("Result", result);
 
             try {
                 if (arrayList != null) {

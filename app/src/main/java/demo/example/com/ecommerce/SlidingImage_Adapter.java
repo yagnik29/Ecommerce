@@ -49,7 +49,8 @@ public class SlidingImage_Adapter extends PagerAdapter {
         final ImageView imageView = (ImageView) imageLayout.findViewById(R.id.slide_image);
 
         imageView.setImageResource(images.get(position));
-        imageView.setOnClickListener(new View.OnClickListener() {
+        view.addView(imageLayout);
+        imageLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //this will log the page number that was click
@@ -61,7 +62,7 @@ public class SlidingImage_Adapter extends PagerAdapter {
                 ft.commit();
             }
         });
-        view.addView(imageLayout);
+
         return imageLayout;
 
     }
