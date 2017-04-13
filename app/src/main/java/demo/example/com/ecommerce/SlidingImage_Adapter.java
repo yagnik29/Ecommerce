@@ -2,7 +2,6 @@ package demo.example.com.ecommerce;
 
 import android.app.FragmentTransaction;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
-
-import static demo.example.com.ecommerce.R.menu.navigational;
 
 /**
  * Created by Yash on 3/28/2017.

@@ -1,6 +1,7 @@
 package demo.example.com.ecommerce;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -90,6 +91,13 @@ public class Navigational extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.action_logout) {
+            Intent i = new Intent(Navigational.this, Login.class);
+            startActivity(i);
+            this.finish();
+            return true;
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
