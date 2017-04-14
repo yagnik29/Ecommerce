@@ -35,7 +35,7 @@ public class Electroincs extends Fragment {
     String description = "Description";
     String price = "price";
     String image = "image";
-    String url = "http://yagnik.890m.com/webservices/fetchimage.php";
+    String url = "http://yagnik.890m.com/webservices/fetchimageEle.php";
 
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
 
@@ -86,33 +86,32 @@ public class Electroincs extends Fragment {
             String result = servicedata.getHttpdata(url);
             /*Log.e("Result", result);*/
 
-            try {
-                if (arrayList != null) {
-                    arrayList.clear();
+            if (result != null) {
+
+                try {
+                    JSONArray jsonArray = new JSONArray(result);
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        NAME = jsonObject.getString(name);
+                        DESCRIPTION = jsonObject.getString(description);
+                        PRICE = jsonObject.getString(price);
+                        IMAGE = jsonObject.getString(image);
+
+                        HashMap<String, String> hm = new HashMap<>();
+                        hm.put("name", NAME);
+                        hm.put("Desc", DESCRIPTION);
+                        hm.put("Price", PRICE);
+                        hm.put("Image", IMAGE);
+                        arrayList.add(hm);
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                JSONArray jsonArray = new JSONArray(result);
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    NAME = jsonObject.getString(name);
-                    DESCRIPTION = jsonObject.getString(description);
-                    PRICE = jsonObject.getString(price);
-                    IMAGE = jsonObject.getString(image);
 
-                    HashMap<String, String> hm = new HashMap<>();
-                    hm.put("name", NAME);
-
-                    hm.put("Desc", DESCRIPTION);
-                    hm.put("Price", PRICE);
-                    hm.put("Image", IMAGE);
-                    arrayList.add(hm);
-
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
             return null;
         }
-
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);

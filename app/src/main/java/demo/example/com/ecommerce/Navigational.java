@@ -28,9 +28,6 @@ import java.util.TimerTask;
 public class Navigational extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +38,6 @@ public class Navigational extends AppCompatActivity
         HomeFragment homeFragment = new HomeFragment();
         android.support.v4.app.FragmentTransaction ft  = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.content_navigational,homeFragment);
-        ft.addToBackStack("C");
         ft.commit();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
