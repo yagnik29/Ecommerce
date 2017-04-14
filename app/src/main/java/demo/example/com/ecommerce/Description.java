@@ -3,6 +3,7 @@ package demo.example.com.ecommerce;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,7 @@ import com.squareup.picasso.Picasso;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Description extends android.app.Fragment{
+public class Description extends Fragment{
 
     TextView textDescription, descText, descPrice;
     ImageView descImage;
@@ -60,7 +61,7 @@ public class Description extends android.app.Fragment{
             @Override
             public void onClick(View view) {
                 Checkout checkout = new Checkout();
-                android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.content_navigational,checkout);
                 ft.addToBackStack("C");
                 ft.commit();

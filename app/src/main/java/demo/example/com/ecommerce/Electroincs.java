@@ -55,7 +55,7 @@ public class Electroincs extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_electroincs, container, false);
-        gridElectronics = (GridView) view.findViewById(R.id.grid);
+        gridElectronics = (GridView) view.findViewById(R.id.gridEle);
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy =
                     new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -85,10 +85,9 @@ public class Electroincs extends Fragment {
             Log.e("Result", result);
 
             try {
-                if (arrayList != null) {
-                    arrayList.clear();
-                }
+
                 JSONArray jsonArray = new JSONArray(result);
+                arrayList.clear();
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     NAME = jsonObject.getString(name);

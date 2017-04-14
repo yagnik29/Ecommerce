@@ -98,6 +98,7 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
         Tab_Adapter tab_adapter = new Tab_Adapter(getFragmentManager());
         tab_adapter.addFragment(new Electroincs(), "Electronic");
         tab_adapter.addFragment(new Appliances(), "Appliances");

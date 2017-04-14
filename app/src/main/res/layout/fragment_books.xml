@@ -5,9 +5,14 @@
     tools:context="demo.example.com.ecommerce.Books">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <GridView
+        android:id="@+id/gridBooks"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="This is Books" />
+        android:verticalSpacing="0dp"
+        android:horizontalSpacing="0dp"
+        android:stretchMode="columnWidth"
+        android:numColumns="2">
 
+    </GridView>
 </FrameLayout>

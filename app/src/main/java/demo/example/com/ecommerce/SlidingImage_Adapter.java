@@ -56,7 +56,7 @@ public class SlidingImage_Adapter extends PagerAdapter {
                 //this will log the page number that was click
                 Log.i("TAG", "This page was clicked: " + (position+1));
                 Description description_frag = new Description();
-                FragmentTransaction ft = navigational.getFragmentManager().beginTransaction();
+                android.support.v4.app.FragmentTransaction ft = navigational.getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.content_navigational, description_frag);
                 ft.addToBackStack("C");
                 ft.commit();

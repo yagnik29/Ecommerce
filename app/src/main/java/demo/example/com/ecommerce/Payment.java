@@ -13,7 +13,7 @@ import android.widget.Toast;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Payment extends android.app.Fragment{
+public class Payment extends Fragment{
 
     TextView textPayment;
 
