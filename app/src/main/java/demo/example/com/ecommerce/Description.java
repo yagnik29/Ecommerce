@@ -60,9 +60,9 @@ public class Description extends Fragment{
         textDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Checkout checkout = new Checkout();
+                Cart cart = new Cart();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.content_navigational,checkout);
+                ft.replace(R.id.content_navigational,cart);
                 ft.addToBackStack("C");
                 ft.commit();
             }
@@ -72,6 +72,7 @@ public class Description extends Fragment{
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Added in cart", Toast.LENGTH_SHORT).show();
+
             }
         });
 
