@@ -85,7 +85,7 @@ public class Navigational extends AppCompatActivity
         if (id == R.id.action_addtocart){
             Cart cart = new Cart();
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_navigational,cart);
+            ft.replace(R.id.content_navigational,cart,"refresh");
             ft.addToBackStack("n");
             ft.commit();
             return true;

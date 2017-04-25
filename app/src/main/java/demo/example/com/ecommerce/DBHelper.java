@@ -48,7 +48,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(ID,cart_getset.getID());
+        //values.put(ID,cart_getset.getID());
         Log.e("========Image======", cart_getset.getItemImage());
         values.put(IMAGE, cart_getset.getItemImage());
         Log.e("========Image======", cart_getset.getItemImage());

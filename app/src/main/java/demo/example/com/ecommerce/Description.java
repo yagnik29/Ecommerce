@@ -77,7 +77,6 @@ public class Description extends Fragment{
                 cart_getset.setItemName(name);
                 cart_getset.setItemPrice(price);
                 cart_getset.setItemDesc(desc);
-
                 DBHelper dbHelper = new DBHelper(getContext());
                 dbHelper.insertData(cart_getset);
 
