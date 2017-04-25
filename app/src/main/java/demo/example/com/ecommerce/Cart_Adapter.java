@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -64,6 +66,9 @@ public class Cart_Adapter extends BaseAdapter{
         desc = (TextView) v.findViewById(R.id.cartlist_desc);
 
         textName.setText(hm.get("name"));
+        Picasso.with(context).load(hm.get("Image")).into(image);
+        price.setText(hm.get("Price"));
+        desc.setText(hm.get("Desc"));
 
         return v;
     }

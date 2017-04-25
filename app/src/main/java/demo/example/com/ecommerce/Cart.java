@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -21,6 +22,8 @@ public class Cart extends Fragment{
 
     TextView textCheckout;
     ListView cartlist;
+    Cart_Adapter cart_adapter;
+    List<Cart_getset> cartlist_show;
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
 
     public Cart() {
@@ -35,11 +38,27 @@ public class Cart extends Fragment{
         View view=  inflater.inflate(R.layout.fragment_cart, container, false);
 
         cartlist = (ListView) view.findViewById(R.id.cart_list);
-        HashMap<String, String> hm = new HashMap<>();
-        hm.put("name","Yagnik Prajapati");
-        arrayList.add(hm);
 
-        Cart_Adapter cart_adapter = new Cart_Adapter(getContext(),arrayList);
+        /*HashMap<String, String> hm = new HashMap<>();
+        hm.put("name","Yagnik Prajapati");
+        arrayList.add(hm);*/
+
+        DBHelper dbHelper = new DBHelper(getContext());
+        cartlist_show =dbHelper.show();
+
+        for( Cart_getset cart_getset : cartlist_show){
+            HashMap<String, String> hm = new HashMap<>();
+            hm.put("Image", cart_getset.getItemImage());
+            hm.put("name", cart_getset.getItemName());
+            hm.put("Price", cart_getset.getItemPrice());
+            hm.put("Desc", cart_getset.getItemDesc());
+
+            arrayList.add(hm);
+
+        }
+
+        Log.e("R+++++", String.valueOf(arrayList));
+        cart_adapter = new Cart_Adapter(getActivity(),arrayList);
         cartlist.setAdapter(cart_adapter);
 
         /*textCheckout = (TextView) view.findViewById(R.id.text_checkout);
@@ -55,4 +74,6 @@ public class Cart extends Fragment{
         });*/
         return  view;
     }
+
+
 }

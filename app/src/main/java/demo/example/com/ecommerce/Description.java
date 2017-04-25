@@ -57,7 +57,7 @@ public class Description extends Fragment{
         descPrice.setText(price);
 
 
-        textDescription.setOnClickListener(new View.OnClickListener() {
+        /*textDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Cart cart = new Cart();
@@ -66,12 +66,23 @@ public class Description extends Fragment{
                 ft.addToBackStack("C");
                 ft.commit();
             }
-        });
+        });*/
 
         addtocart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Cart_getset cart_getset = new Cart_getset();
+                cart_getset.setItemImage(image);
+                cart_getset.setItemName(name);
+                cart_getset.setItemPrice(price);
+                cart_getset.setItemDesc(desc);
+
+                DBHelper dbHelper = new DBHelper(getContext());
+                dbHelper.insertData(cart_getset);
+
                 Toast.makeText(getActivity(), "Added in cart", Toast.LENGTH_SHORT).show();
+
 
             }
         });
