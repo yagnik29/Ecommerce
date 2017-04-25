@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,11 +21,11 @@ import java.util.List;
  */
 public class Cart extends Fragment{
 
-    TextView textCheckout;
     ListView cartlist;
     Cart_Adapter cart_adapter;
     List<Cart_getset> cartlist_show;
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
+
 
     public Cart() {
         // Required empty public constructor
@@ -38,16 +39,19 @@ public class Cart extends Fragment{
         View view=  inflater.inflate(R.layout.fragment_cart, container, false);
 
         cartlist = (ListView) view.findViewById(R.id.cart_list);
+        refresh();
 
-        /*HashMap<String, String> hm = new HashMap<>();
-        hm.put("name","Yagnik Prajapati");
-        arrayList.add(hm);*/
+        return  view;
+    }
+
+    private void refresh() {
 
         DBHelper dbHelper = new DBHelper(getContext());
         cartlist_show =dbHelper.show();
 
         for( Cart_getset cart_getset : cartlist_show){
             HashMap<String, String> hm = new HashMap<>();
+            hm.put("id", String.valueOf(cart_getset.getID()));
             hm.put("Image", cart_getset.getItemImage());
             hm.put("name", cart_getset.getItemName());
             hm.put("Price", cart_getset.getItemPrice());
@@ -56,23 +60,10 @@ public class Cart extends Fragment{
             arrayList.add(hm);
 
         }
-
-        Log.e("R+++++", String.valueOf(arrayList));
+//        Log.e("R+++++", String.valueOf(arrayList));
         cart_adapter = new Cart_Adapter(getActivity(),arrayList);
         cartlist.setAdapter(cart_adapter);
-
-        /*textCheckout = (TextView) view.findViewById(R.id.text_checkout);
-        textCheckout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Payment payment = new Payment();
-                android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.cart,payment);
-                ft.addToBackStack("D");
-                ft.commit();
-            }
-        });*/
-        return  view;
+        cart_adapter.notifyDataSetChanged();
     }
 
 

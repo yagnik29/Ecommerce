@@ -74,7 +74,7 @@ public class Books extends Fragment {
         protected Void doInBackground(Void... voids) {
             HttpServiceHandler servicedata = new HttpServiceHandler();
             String result = servicedata.getHttpdata(url);
-            Log.e("Result", result);
+//            Log.e("Result", result);
 
             try {
 

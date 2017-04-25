@@ -82,7 +82,7 @@ public class Electroincs extends Fragment {
         protected Void doInBackground(Void... voids) {
             HttpServiceHandler servicedata = new HttpServiceHandler();
             String result = servicedata.getHttpdata(url);
-            Log.e("Result", result);
+//            Log.e("Result", result);
 
             try {
 
@@ -117,6 +117,7 @@ public class Electroincs extends Fragment {
 
             GridAdapter adapter = new GridAdapter(getActivity(), arrayList);
             gridElectronics.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
 
         }
     }

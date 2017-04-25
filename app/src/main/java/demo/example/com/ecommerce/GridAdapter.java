@@ -66,7 +66,7 @@ public class GridAdapter extends BaseAdapter {
         holder.gridtextView = (TextView) view.findViewById(R.id.gridText);
         holder.gridimageView = (ImageView) view.findViewById(R.id.gridImage);
         holder.gridPrice = (TextView) view.findViewById(R.id.gridPrice);
-        Log.e("in adapter==", "" + arrayList.get(i).get("Image"));
+        //Log.e("in adapter==", "" + arrayList.get(i).get("Image"));
 
         holder.gridtextView.setText(hm.get("name"));
         holder.gridPrice.setText(hm.get("Price"));
@@ -79,7 +79,7 @@ public class GridAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "This is what you clicked", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "This is what you clicked", Toast.LENGTH_SHORT).show();
                 Description description_frag = new Description();
                 Bundle  bundle = new Bundle();
                 bundle.putString("name",arrayList.get(i).get("name"));

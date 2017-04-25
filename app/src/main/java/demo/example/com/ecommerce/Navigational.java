@@ -83,10 +83,10 @@ public class Navigational extends AppCompatActivity
             return true;
         }
         if (id == R.id.action_addtocart){
-            Cart checkout = new Cart();
+            Cart cart = new Cart();
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_navigational,checkout);
-            ft.addToBackStack("b");
+            ft.replace(R.id.content_navigational,cart);
+            ft.addToBackStack("n");
             ft.commit();
             return true;
         }

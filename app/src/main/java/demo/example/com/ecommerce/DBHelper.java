@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +48,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = getWritableDatabase();
         ContentValues values = new ContentValues();
 
+        values.put(ID,cart_getset.getID());
         Log.e("========Image======", cart_getset.getItemImage());
         values.put(IMAGE, cart_getset.getItemImage());
         Log.e("========Image======", cart_getset.getItemImage());
@@ -69,12 +71,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
         while (cursor.moveToNext()){
 
+            int id = cursor.getInt(0);
             String img = cursor.getString(1);
             String name = cursor.getString(2);
             String price= cursor.getString(3);
             String desc= cursor.getString(4);
 
             Cart_getset cart_getset  = new Cart_getset();
+            cart_getset.setID(id);
             cart_getset.setItemImage(img);
             cart_getset.setItemName(name);
             cart_getset.setItemPrice(price);
@@ -83,8 +87,15 @@ public class DBHelper extends SQLiteOpenHelper {
             arrayList.add(cart_getset);
         }
 
-        Log.d("ArrayList =++++++", String.valueOf(arrayList));
+//        Log.d("ArrayList =++++++", String.valueOf(arrayList));
 
         return arrayList;
+    }
+
+    public void deletedata(int id) {
+        SQLiteDatabase db = getWritableDatabase();
+        Log.d("id+++", String.valueOf(id));
+        String where = ID + "=" + id;
+        db.delete(TABLENAME, where, null);
     }
 }

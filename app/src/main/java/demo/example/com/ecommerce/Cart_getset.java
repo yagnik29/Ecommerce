@@ -6,10 +6,21 @@ package demo.example.com.ecommerce;
 
 public class Cart_getset  {
 
+
+    int ID;
     String itemName;
     String itemPrice;
     String itemDesc;
     String itemImage;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
 
     public String getItemImage() {
         return itemImage;
