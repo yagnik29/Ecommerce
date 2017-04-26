@@ -26,8 +26,9 @@ public class HomeFragment extends Fragment {
     ImageView imageView;
     TabLayout tabLayout;
     ViewPager viewPager_tab, viewPager_image;
-    private static int currentPage;
-    private static int NUM_Pages;
+    public static Tab_Adapter tab_adapter;
+    public static int currentPage;
+    public static int NUM_Pages;
 
     private static final Integer[] images = {R.drawable.litchi, R.drawable.mango, R.drawable.pineapple};
     private ArrayList<Integer> imageArray = new ArrayList<Integer>();
@@ -99,11 +100,13 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        Tab_Adapter tab_adapter = new Tab_Adapter(getFragmentManager());
+        tab_adapter = new Tab_Adapter(getFragmentManager());
         tab_adapter.addFragment(new Electroincs(), "Electronic");
         tab_adapter.addFragment(new Appliances(), "Appliances");
         //tab_adapter.addFragment(new Clothing(), "Fashion");
         tab_adapter.addFragment(new Books(), "Books");
+
+//        tab_adapter.notifyDataSetChanged();
 
         viewPager_tab.setAdapter(tab_adapter);
         tabLayout.setupWithViewPager(viewPager_tab);

@@ -2,12 +2,10 @@ package demo.example.com.ecommerce;
 
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,9 +25,7 @@ import java.util.HashMap;
 public class Electroincs extends Fragment {
 
     GridView gridElectronics;
-    Context context;
-    ArrayList itemName;
-    String URL, NAME, DESCRIPTION, PRICE, IMAGE;
+    String NAME, DESCRIPTION, PRICE, IMAGE;
     ProgressDialog progressDialog;
     String name = "Name";
     String description = "Description";
@@ -56,19 +52,17 @@ public class Electroincs extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_electroincs, container, false);
         gridElectronics = (GridView) view.findViewById(R.id.gridEle);
-        if (android.os.Build.VERSION.SDK_INT > 9) {
+        if (android.os.Build.VERSION.SDK_INT > 18) {
             StrictMode.ThreadPolicy policy =
                     new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
         new GetElectronicsdata().execute();
-
-
         return view;
 
     }
 
-    public class GetElectronicsdata extends AsyncTask<Void, Void, Void> {
+    private class GetElectronicsdata extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
@@ -97,7 +91,6 @@ public class Electroincs extends Fragment {
 
                     HashMap<String, String> hm = new HashMap<>();
                     hm.put("name", NAME);
-
                     hm.put("Desc", DESCRIPTION);
                     hm.put("Price", PRICE);
                     hm.put("Image", IMAGE);

@@ -39,4 +39,16 @@ public class Tab_Adapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return fragmentTitle.get(position);
     }
+
+    @Override
+    public int getItemPosition(Object object) {
+        // POSITION_NONE makes it possible to reload the PagerAdapter
+        return POSITION_NONE;
+
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
+    }
 }

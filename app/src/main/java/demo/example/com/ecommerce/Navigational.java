@@ -3,6 +3,7 @@ package demo.example.com.ecommerce;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -100,11 +101,28 @@ public class Navigational extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_electronics) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            Electroincs electroincs = new Electroincs();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_navigational,electroincs);
+            ft.addToBackStack("e");
+            ft.commit();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_appliances) {
+            Appliances appliances = new Appliances();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_navigational,appliances);
+            ft.addToBackStack("f");
+            ft.commit();
+
+
+        } else if (id == R.id.nav_books) {
+            Books books = new Books();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_navigational,books);
+            ft.addToBackStack("g");
+            ft.commit();
 
         } else if (id == R.id.nav_manage) {
 
