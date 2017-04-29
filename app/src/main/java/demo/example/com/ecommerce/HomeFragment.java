@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,7 +81,7 @@ public class HomeFragment extends Fragment {
             public void run() {
                 handler.post(Update);
             }
-        }, 3000, 3000);
+        }, 4000, 4000);
 
         //Pager Listener over indicator
 
@@ -101,6 +102,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
         tab_adapter = new Tab_Adapter(getFragmentManager());
         tab_adapter.addFragment(new Electroincs(), "Electronic");
         tab_adapter.addFragment(new Appliances(), "Appliances");
@@ -109,6 +111,7 @@ public class HomeFragment extends Fragment {
 
 //        tab_adapter.notifyDataSetChanged();
 
+        Log.e("viewpager" , String.valueOf(viewPager_tab));
         viewPager_tab.setAdapter(tab_adapter);
         tabLayout.setupWithViewPager(viewPager_tab);
 

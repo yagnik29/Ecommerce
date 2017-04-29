@@ -1,7 +1,7 @@
 package demo.example.com.ecommerce;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -56,6 +56,10 @@ public class Navigational extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            finish();
+            startActivity(getIntent());
+//            Intent i=new Intent(Navigational.this,Navigational.class);
+//            startActivity(i);
         }
     }
 
@@ -78,10 +82,7 @@ public class Navigational extends AppCompatActivity
             return true;
         }
         if (id == R.id.action_logout) {
-            Intent i = new Intent(Navigational.this, Login.class);
-            startActivity(i);
-            this.finish();
-            return true;
+            finish();
         }
         if (id == R.id.action_addtocart){
             Cart cart = new Cart();
@@ -97,7 +98,7 @@ public class Navigational extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 

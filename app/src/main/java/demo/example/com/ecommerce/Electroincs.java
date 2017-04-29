@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,6 +82,8 @@ public class Electroincs extends Fragment {
             try {
 
                 JSONArray jsonArray = new JSONArray(result);
+
+                Log.e("Jsonarray",""+jsonArray);
                 arrayList.clear();
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -96,6 +99,7 @@ public class Electroincs extends Fragment {
                     hm.put("Image", IMAGE);
                     arrayList.add(hm);
 
+                    Log.e("arrylist==",arrayList+"");
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
