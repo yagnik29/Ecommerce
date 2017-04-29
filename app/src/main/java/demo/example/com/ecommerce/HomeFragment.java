@@ -49,6 +49,7 @@ public class HomeFragment extends Fragment {
         viewPager_tab = (ViewPager) view.findViewById(R.id.pager_tab);
         viewPager_image = (ViewPager) view.findViewById(R.id.pager_image);
 
+        imageArray.clear();  //clearing the sliding images which was earlier addding multiple images. problem 1
         for (int i = 0; i < images.length; i++)
             imageArray.add(images[i]);
 
