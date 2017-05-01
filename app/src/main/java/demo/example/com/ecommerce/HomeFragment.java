@@ -25,8 +25,8 @@ import java.util.TimerTask;
 public class HomeFragment extends Fragment {
 
     ImageView imageView;
-    TabLayout tabLayout;
-    ViewPager viewPager_tab, viewPager_image;
+    public static TabLayout tabLayout;
+    public static ViewPager viewPager_tab, viewPager_image;
     public static Tab_Adapter tab_adapter;
     public static int currentPage;
     public static int NUM_Pages;
@@ -111,7 +111,7 @@ public class HomeFragment extends Fragment {
 
 //        tab_adapter.notifyDataSetChanged();
 
-        Log.e("viewpager" , String.valueOf(viewPager_tab));
+        Log.e("viewpager", String.valueOf(viewPager_tab));
         viewPager_tab.setAdapter(tab_adapter);
         tabLayout.setupWithViewPager(viewPager_tab);
 

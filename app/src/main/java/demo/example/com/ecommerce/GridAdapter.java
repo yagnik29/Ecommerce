@@ -88,11 +88,14 @@ public class GridAdapter extends BaseAdapter {
                 bundle.putString("Image",arrayList.get(i).get("Image"));
                 description_frag.setArguments(bundle);
 
-                navigational.getSupportFragmentManager().beginTransaction().replace(R.id.content_navigational,description_frag).addToBackStack(null).commit();
+                navigational.getSupportFragmentManager().beginTransaction().add(R.id.content_navigational,description_frag).addToBackStack(null).commit();
                 /*android.support.v4.app.FragmentTransaction ft=navigational.getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.content_navigational,description_frag);
                 ft.addToBackStack("B");
                 ft.commit();*/
+                HomeFragment.tabLayout.setVisibility(View.GONE);
+                HomeFragment.viewPager_tab.setVisibility(View.GONE);
+                HomeFragment.viewPager_image.setVisibility(View.GONE);
             }
         });
         return view;

@@ -11,11 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class Navigational extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-
 
 
     @Override
@@ -26,8 +25,8 @@ public class Navigational extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         HomeFragment homeFragment = new HomeFragment();
-        android.support.v4.app.FragmentTransaction ft  = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.content_navigational,homeFragment);
+        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_navigational, homeFragment);
         ft.commit();
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -56,10 +55,13 @@ public class Navigational extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-            finish();
-            startActivity(getIntent());
+            /*finish();
+            startActivity(getIntent());*/
 //            Intent i=new Intent(Navigational.this,Navigational.class);
 //            startActivity(i);
+            HomeFragment.tabLayout.setVisibility(View.VISIBLE);
+            HomeFragment.viewPager_tab.setVisibility(View.VISIBLE);
+            HomeFragment.viewPager_image.setVisibility(View.VISIBLE);
         }
     }
 
@@ -84,10 +86,10 @@ public class Navigational extends AppCompatActivity
         if (id == R.id.action_logout) {
             finish();
         }
-        if (id == R.id.action_addtocart){
+        if (id == R.id.action_addtocart) {
             Cart cart = new Cart();
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_navigational,cart,"refresh");
+            ft.add(R.id.content_navigational, cart, "refresh");
             ft.addToBackStack("n");
             ft.commit();
             return true;
@@ -106,14 +108,14 @@ public class Navigational extends AppCompatActivity
             // Handle the camera action
             Electroincs electroincs = new Electroincs();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_navigational,electroincs);
+            ft.add(R.id.content_navigational, electroincs);
             ft.addToBackStack("e");
             ft.commit();
 
         } else if (id == R.id.nav_appliances) {
             Appliances appliances = new Appliances();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_navigational,appliances);
+            ft.add(R.id.content_navigational, appliances);
             ft.addToBackStack("f");
             ft.commit();
 
@@ -121,7 +123,7 @@ public class Navigational extends AppCompatActivity
         } else if (id == R.id.nav_books) {
             Books books = new Books();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_navigational,books);
+            ft.add(R.id.content_navigational, books);
             ft.addToBackStack("g");
             ft.commit();
 
@@ -137,4 +139,5 @@ public class Navigational extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
