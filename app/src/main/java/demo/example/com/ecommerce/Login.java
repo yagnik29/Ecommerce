@@ -57,6 +57,8 @@ public class Login extends AppCompatActivity {
 
                 sUsername = username.getText().toString();
                 sPassword = password.getText().toString();
+
+
                 try {
                     url = "http://yagnik.890m.com/webservices/jsonphp.php?" + "email_id=" + sUsername + "&password=" + sPassword;
                     new GetData().execute();

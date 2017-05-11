@@ -4,6 +4,7 @@ package demo.example.com.ecommerce;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ import okhttp3.Response;
 public class Register extends android.app.Fragment {
 
     Button register;
-    EditText name, email, phone, address, city, password,pincode;
+    EditText name, email, phone, address, city, password, pincode;
 
 
     public Register() {
@@ -53,58 +54,89 @@ public class Register extends android.app.Fragment {
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-                String sName = name.getText().toString();
-                String sEmail = email.getText().toString();
-                String sPhone = phone.getText().toString();
-                String sAddress = address.getText().toString();
-                String sCity = city.getText().toString();
-                String sPincode = pincode.getText().toString();
-                String sPassword = password.getText().toString();
-
-                if (sName.length() == 0) {
-                    name.setError("Please Enter Name");
-                }
-                if (sEmail.length() == 0) {
-                    email.setError("Please Enter valid E-mail");
-                }
-                if (sPhone.length() < 10) {
-                    phone.setError("Please Enter valid Phone Number");
-                }
-                if (sAddress.length() == 0) {
-                    address.setError("Please Enter your address");
-                }
-                if (sCity.length() == 0) {
-                    city.setError("Please Enter your curent city name");
-                }
-
-                if (sPincode.length() <6){
-                    pincode.setError("Please enter valid PIN code");
-                }
-
-                if (sPassword.length() <= 8) {
-                    password.setError("Password must be 8 characters long");
-                    password.requestFocus();
-                } else {
-                    try {
-                        String url = "http://yagnik.890m.com/webservices/registration.php?uname=" + sName +
-                                "&email_id=" + sEmail + "&phone=" + sPhone + "&address1=" + sAddress + "&city=" + sCity + "&pincode=" + sPincode + "&password="  + sPassword;
-
-                        OkHttpClient client = new OkHttpClient();
-
-                        Request request = new Request.Builder().url(url).build();
-                        Response response = client.newCall(request).execute();
-
-                        Toast.makeText(getActivity(), response.body().toString(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
-                    } catch (Exception e) {
-                    }
-                }
-
+            public void onClick(View v) {
+                attemptRegistrtion();
             }
         });
         return v;
+    }
+
+    private void attemptRegistrtion() {
+
+        String sName = name.getText().toString();
+        String sEmail = email.getText().toString();
+        String sPhone = phone.getText().toString();
+        String sAddress = address.getText().toString();
+        String sCity = city.getText().toString();
+        String sPincode = pincode.getText().toString();
+        String sPassword = password.getText().toString();
+
+        boolean cancel = false;
+        View focusView = null;
+
+        if (TextUtils.isEmpty(sName)) {
+            name.setError("Please Enter Name");
+            focusView = name;
+            cancel = true;
+        }
+        if (TextUtils.isEmpty(sEmail)) {
+            email.setError("This field is required");
+            focusView = email;
+            cancel = true;
+        } else if (!isEmailValid(sEmail)) {
+            email.setError("This email address is invalid");
+            focusView = email;
+            cancel = true;
+        }
+        if (sPhone.length() < 10) {
+            phone.setError("Please Enter valid Phone Number");
+            focusView = phone;
+            cancel = true;
+        }
+        if (sAddress.length() == 0) {
+            address.setError("Please Enter your address");
+            focusView = address;
+            cancel = true;
+        }
+        if (sCity.length() == 0) {
+            city.setError("Please Enter your curent city name");
+            focusView = city;
+            cancel = true;
+        }
+
+        if (sPincode.length() < 6) {
+            pincode.setError("Please enter valid PIN code");
+            focusView = pincode;
+            cancel = true;
+        }
+
+        if (sPassword.length() <= 8) {
+            password.setError("Password must be 8 characters long");
+            focusView = password;
+            cancel = true;
+        }
+
+        if (cancel) {
+            focusView.requestFocus();
+        } else {
+            try {
+                String url = "http://yagnik.890m.com/webservices/registration.php?uname=" + sName +
+                        "&email_id=" + sEmail + "&phone=" + sPhone + "&address1=" + sAddress + "&city=" + sCity + "&pincode=" + sPincode + "&password=" + sPassword;
+
+                OkHttpClient client = new OkHttpClient();
+
+                Request request = new Request.Builder().url(url).build();
+                Response response = client.newCall(request).execute();
+
+                Toast.makeText(getActivity(), response.body().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
+            } catch (Exception e) {
+            }
+        }
+    }
+
+    private boolean isEmailValid(String email) {
+        return email.contains("@gmail.com");
     }
 
 }
